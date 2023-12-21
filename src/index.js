@@ -1,4 +1,5 @@
 const { Client, GatewayIntentBits } = require('discord.js');
+const handlingEvents = require('./eventHandler/handlingEvents');
 require("dotenv").config();
 
 
@@ -11,5 +12,7 @@ const client = new Client({
 
     ]
 });
+
+handlingEvents(client)
 
 client.login(process.env.DISCORD_KEY)
