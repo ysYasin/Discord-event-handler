@@ -6,7 +6,6 @@ const getAllFiles = require("./getAllFiles");
 module.exports = function (exceptions = []) {
     const localCommands = []
     try {
-
         const commandsFolders = getAllFiles(path.join(__dirname, "..", "commands"));
         for (const commandfolder of commandsFolders) {
             try {
