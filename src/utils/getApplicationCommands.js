@@ -16,6 +16,6 @@ module.exports = async function (client, guildId) {
         return applicationGuilds = undifiend;
     }
 
-
+    applicationGuilds.fetch()
     return applicationGuilds;
 }
