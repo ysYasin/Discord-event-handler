@@ -1,7 +1,8 @@
 module.exports = {
+    deleted: true,
     name: "ping",
-    description: "Reply with a Pong!",
-    // onlyDevs: true,
+    description: "Reply me a Pong!",
+    onlyDevs: true,
     // onlyserver: true,
     //options:{}
     callback: (client, interaction) => {

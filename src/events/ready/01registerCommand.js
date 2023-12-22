@@ -4,16 +4,17 @@ const getApplicationCommands = require("../../utils/getApplicationCommands")
 const getLocalCommands = require("../../utils/getLocalCommands")
 
 module.exports = async function (client) {
-    const localCommands = getLocalCommands();
-    const appCommands = getApplicationCommands(client, ysyasinerver);
+    const localCommands = await getLocalCommands();
+    const appCommands = await getApplicationCommands(client, ysyasinerver);
 
     try {
-        for (const localCommand of localCommands) {
+        for (let localCommand of localCommands) {
             const existingCommand = await appCommands.cache.find(
                 (command) => command.name === localCommand.name
             )
             if (existingCommand) {
                 if (localCommand.deleted) {
+                    console.log(`existing command ${existingCommand.id}`);
                     await appCommands.delete(existingCommand.id)
                     console.log(`deleted ${existingCommand.name} successfully`);
                     continue;
@@ -30,6 +31,7 @@ module.exports = async function (client) {
             } else {
                 if (localCommand.deleted) {
                     console.log(`${localCommand.name} deleted successfully`);
+                    // Assuming you have a function to delete the command, replace it with the appropriate function
                     continue;
                 }
                 await appCommands.create({
